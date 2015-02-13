@@ -10,7 +10,7 @@ import org.scalacheck.{Arbitrary, Gen, Properties}
 class CreditCardGenerator extends Properties("CreditCard"){
   type CreditCard = List[Int]
 
-  def isCreditCard(l1: List[Int], l2: List[Int]) = {
+  def isCreditCard((List[Int], List[Int]): lists = {
     val l3 = l2 map (_ * 2)
     (l1.sum + l3.sum) % 10 == 0
   }
@@ -28,10 +28,9 @@ class CreditCardGenerator extends Properties("CreditCard"){
   lazy val list1: Gen[CreditCard] = for {
     l1 <- Gen.listOfN(5, arbitrary[Int])
     l2 <- Gen.listOfN(6, arbitrary[Int])
-    if isCreditCard(l1, l2)
-  } yield zip(l1, l2)
+  } yield (l1, l2)
 
-  implicit lazy val creditCard: Arbitrary[CreditCard] = Arbitrary(list1)
+  implicit lazy val creditCard: Arbitrary[CreditCard] = Arbitrary(list1 suchThat(isCreditCard(list1)))
 
   property("prop1") = forAll { (c: CreditCard) =>
     Luhn(c.mkString(""))
