@@ -2,6 +2,7 @@ package io.rob
 
 import org.scalacheck.Arbitrary._
 import org.scalacheck.Prop.forAll
+import org.scalacheck.util.Pretty.Params
 import org.scalacheck.{Arbitrary, Gen, Properties}
 import org.scalatest.prop.Checkers
 import org.scalatest.{Matchers, WordSpec}
@@ -10,6 +11,8 @@ import org.scalatest.{Matchers, WordSpec}
  * Created by rob on 11/02/15.
  */
 class LuhnTest extends WordSpec with Matchers with Checkers {
+  implicit override val generatorDrivenConfig = PropertyCheckConfig(maxDiscarded = 3000)
+
   "My Luhn Algorithm" should {
     "validate the provided credit cards" in {
       Luhn("49927398716") should be(true)

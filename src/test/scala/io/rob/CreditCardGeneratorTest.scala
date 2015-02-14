@@ -9,9 +9,9 @@ class CreditCardGeneratorTest extends WordSpec with Matchers {
 
   "My CreditCardGenerator" should {
     "merge two lists together" in  {
-      val l1 = List(1, 2, 3)
-      val l2 = List(4, 5, 6)
-      (new CreditCardGenerator).merge(l1, l2) should equal (List(1, 4, 2, 5, 3, 6))
+      val l1 = List(1, 4, 8, 1, 9, 7)
+      val l2 = List(5, 2, 7, 9, 3)
+      (new CreditCardGenerator).merge(l1, l2) should equal (List(7, 3, 9, 9, 1, 7, 8, 2, 4, 5, 1))
     }
   }
 
