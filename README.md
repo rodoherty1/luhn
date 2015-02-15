@@ -1,8 +1,13 @@
 Luhn CreditCard Validator - FunctionalKats January 2015
 =======================================================
 
-The unit tests use ScalaTest and ScalaCheck.  
+The main code is in ```Luhn.scala```
+The main unit test is ```LuhnTest.scala```
 
-ScalaCheck (which is equivalent to Haskell's QuickCheck) is a testing framework which allows automatic generation of inputs for your test.
+The unit tests use ScalaTest and ScalaCheck.
 
-My CreditCard generators randomly generates 100 valid creditcards and 100 invalid creditcards.
+ScalaCheck (which is equivalent to Haskell's QuickCheck) is a testing framework which allows automatic generation of
+inputs for your test.
+
+My CreditCard generator randomly generates 100 valid creditcards and 100 invalid creditcards and then tests each one
+in turn.

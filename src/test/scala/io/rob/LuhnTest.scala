@@ -21,6 +21,10 @@ class LuhnTest extends WordSpec with Matchers with Checkers {
       Luhn("1234567812345670") should be(true)
     }
 
+    /*
+     * This test asks my CreditCardGenerator to generate a tonne of random CreditCard numbers and then
+     * test each one in turn.
+     */
     "validate my generated credit cards" in {
       check(new CreditCardGenerator)
     }
